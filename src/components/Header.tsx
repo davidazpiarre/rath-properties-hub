@@ -1,14 +1,9 @@
-import { Phone, Mail, Menu, X } from "lucide-react";
-import { useState } from "react";
-import { Button } from "./ui/button";
+import { Phone, Mail } from "lucide-react";
 
 const Header = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     element?.scrollIntoView({ behavior: "smooth" });
-    setMobileMenuOpen(false);
   };
 
   return (
@@ -38,8 +33,8 @@ const Header = () => {
             Grupo Inmobiliario Rath
           </button>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-6">
+          {/* Desktop Menu (always visible) */}
+          <div className="flex items-center gap-6">
             <button onClick={() => scrollToSection("inicio")} className="hover:text-primary transition-colors">
               Inicio
             </button>
@@ -56,40 +51,7 @@ const Header = () => {
               Contacto
             </button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X /> : <Menu />}
-          </Button>
         </div>
-
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden pb-4 animate-fade-in">
-            <div className="flex flex-col gap-3">
-              <button onClick={() => scrollToSection("inicio")} className="text-left py-2 hover:text-primary transition-colors">
-                Inicio
-              </button>
-              <button onClick={() => scrollToSection("propiedades")} className="text-left py-2 hover:text-primary transition-colors">
-                Propiedades
-              </button>
-              <button onClick={() => scrollToSection("nosotros")} className="text-left py-2 hover:text-primary transition-colors">
-                Nosotros
-              </button>
-              <button onClick={() => scrollToSection("servicios")} className="text-left py-2 hover:text-primary transition-colors">
-                Servicios
-              </button>
-              <button onClick={() => scrollToSection("contacto")} className="text-left py-2 hover:text-primary transition-colors">
-                Contacto
-              </button>
-            </div>
-          </div>
-        )}
       </nav>
     </header>
   );

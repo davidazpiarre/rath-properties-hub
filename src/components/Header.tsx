@@ -6,6 +6,8 @@ const Header = () => {
     element?.scrollIntoView({ behavior: "smooth" });
   };
 
+  //Prueba git
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm shadow-sm">
       {/* Top Bar */}
@@ -17,7 +19,7 @@ const Header = () => {
                 <Phone className="h-4 w-4" />
                 <span className="hidden sm:inline">+52 55 1234 5678</span>
               </a>
-              <a href="mailto:contacto@gruporath.com" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+              <a href="mailto:contact@gruporath.com" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
                 <Mail className="h-4 w-4" />
                 <span className="hidden sm:inline">contacto@gruporath.com</span>
               </a>

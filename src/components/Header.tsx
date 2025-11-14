@@ -1,4 +1,5 @@
 import { Phone, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const scrollToSection = (id: string) => {
@@ -6,7 +7,6 @@ const Header = () => {
     element?.scrollIntoView({ behavior: "smooth" });
   };
 
-  //Prueba git
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm shadow-sm">
@@ -52,6 +52,9 @@ const Header = () => {
             <button onClick={() => scrollToSection("contacto")} className="hover:text-primary transition-colors">
               Contacto
             </button>
+            <Link to="/prueba" className="hover:text-primary transition-colors">
+              Prueba
+            </Link>
           </div>
         </div>
       </nav>

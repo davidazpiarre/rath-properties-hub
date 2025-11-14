@@ -1,10 +1,19 @@
 import { Phone, Mail } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    element?.scrollIntoView({ behavior: "smooth" });
+    // Si estamos en otra página, navegar primero a la página principal con hash
+    if (location.pathname !== "/") {
+      navigate(`/#${id}`);
+    } else {
+      // Si ya estamos en la página principal, hacer scroll directamente
+      const element = document.getElementById(id);
+      element?.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
 
@@ -31,9 +40,18 @@ const Header = () => {
       {/* Main Navigation */}
       <nav className="container mx-auto px-4">
         <div className="flex items-center justify-between py-4">
-          <button onClick={() => scrollToSection("inicio")} className="text-2xl font-bold text-primary">
+          <Link 
+            to="/" 
+            onClick={(e) => {
+              if (location.pathname === "/") {
+                e.preventDefault();
+                scrollToSection("inicio");
+              }
+            }} 
+            className="text-2xl font-bold text-primary"
+          >
             Grupo Inmobiliario Rath
-          </button>
+          </Link>
 
           {/* Desktop Menu (always visible) */}
           <div className="flex items-center gap-6">
